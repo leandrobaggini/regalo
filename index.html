@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>No cuelgues! V 0.0.7</title>
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="style.css">
+
+    <!--Tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap" rel="stylesheet"> 
+
+    <!--Librerias-->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+    
+
+  
+  
+  <a-scene 
+      id="scene-game"
+      embedded 
+      arjs
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true"
+    >
+
+    <!--Carga Assets-->
+    <a-assets>
+      <a-asset-item id="ticket" src="./assets/happybox/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-entity
+      gltf-model="#ticket"
+      scale="10 10 10"
+      rotation="0 180 0"
+      look-at="[gps-camera]"
+      animation-mixer
+      gps-entity-place="latitude: -31.2463536 ; longitude: -61.48670527777778"
+    ></a-entity>
+
+    <!--Camara necesaria para Location based-->
+    <a-camera gps-camera rotation-reader></a-camera>
+
+  </a-scene>
+
+  <!--Aceptar el premio-->
+  <div class="controls">
+    <button onclick="aceptarpremio()">Aceptar Premio</button>
+  </div>
+
+  <!--Componentes-->
+  <script src="main.js"></script>
+
+</body>
+</html>
